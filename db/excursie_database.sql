@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 jul 2026 om 20:12
+-- Gegenereerd op: 09 jul 2026 om 20:49
 -- Serverversie: 10.4.32-MariaDB
 -- PHP-versie: 8.2.12
 
@@ -88,6 +88,7 @@ CREATE TABLE `exc_items` (
   `tag` varchar(40) NOT NULL,
   `description` text NOT NULL,
   `tip` text NOT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
   `icon_color` varchar(10) NOT NULL DEFAULT '#D44D5C',
   `sort_order` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -96,21 +97,21 @@ CREATE TABLE `exc_items` (
 -- Gegevens worden geëxporteerd voor tabel `exc_items`
 --
 
-INSERT INTO `exc_items` (`id`, `category`, `title`, `tag`, `description`, `tip`, `icon_color`, `sort_order`) VALUES
-(1, 'sight', 'Brandenburger Tor', 'Icoon', 'Het meest gefotografeerde symbool van Berlijn en van de Duitse eenwording. \'s Avonds prachtig verlicht.', 'Kom rond zonsondergang voor de beste foto\'s, veel minder druk dan overdag.', '#D44D5C', 1),
-(2, 'sight', 'Reichstagsgebäude', 'Architectuur', 'De glazen koepel van het Duitse parlement geeft een 360°-uitzicht over de stad en laat zien hoe transparantie in architectuur wordt vertaald.', 'Reserveer de koepel gratis van tevoren online — plekken zijn snel vol.', '#D44D5C', 2),
-(3, 'sight', 'East Side Gallery', 'Street art', '1,3 km origineel stuk Berlijnse Muur, volgeschilderd door kunstenaars uit de hele wereld. Een verplicht adres voor iedereen die met visuele cultuur bezig is.', 'Loop \'m in de ochtend voor rustige foto\'s zonder mensen ervoor.', '#D44D5C', 3),
-(4, 'sight', 'Museumsinsel', 'Museum', 'UNESCO-eiland met vijf topmusea, waaronder het Pergamonmuseum. Antieke architectuur op ware grootte, letterlijk binnen.', 'Neem de Berlin WelcomeCard museum-optie als je meerdere musea wilt zien.', '#D44D5C', 4),
-(5, 'sight', 'Fernsehturm Alexanderplatz', 'Uitzicht', '368 meter hoge tv-toren met draaiend restaurant. Op heldere dagen zie je tot 40 km ver — goed startpunt om de stad te leren lezen.', 'Boek een tijdslot online, anders sta je makkelijk 1-2 uur in de rij.', '#D44D5C', 5),
-(6, 'sight', 'Checkpoint Charlie', 'Geschiedenis', 'Beroemdste grensovergang tussen Oost- en West-Berlijn tijdens de Koude Oorlog. Nu een openluchtmuseum met foto\'s en context.', 'Combineer met het Mauermuseum ernaast voor de volledige geschiedenis.', '#D44D5C', 6),
-(7, 'sight', 'Gedenkstätte Berliner Mauer', 'Geschiedenis', 'Op de Bernauer Straße staat nog een origineel stuk grensstrook, inclusief wachttoren — indrukwekkender en stiller dan de East Side Gallery.', 'Gratis toegang, ga in combinatie met een korte wandeling langs de Mauerweg.', '#D44D5C', 7),
-(8, 'activity', 'Mauerpark op zondag', 'Weekend', 'Vlooienmarkt overdag, gratis openlucht-karaoke in het amfitheater aan het einde van de middag. Dé plek om lokale student vibes op te snuiven.', 'Alleen op zondag — check dus de datum van de excursie hierop.', '#E3B5A4', 1),
-(9, 'activity', 'Markthalle Neun — Street Food Thursday', 'Eten', 'Donderdagavond verandert deze markthal in Kreuzberg in een internationale street food markt. Betaalbaar en heel geschikt voor groepen.', 'Ga vroeg, vanaf 17:00 wordt het snel druk.', '#E3B5A4', 2),
-(10, 'activity', 'Fietstour door de stad', 'Actief', 'Berlijn is extreem fietsvriendelijk. Een gegidste of eigen fietstour langs Tiergarten, Muurresten en Alexanderplatz laat je in een paar uur veel zien.', 'Studentenkorting bij de meeste verhuurbedrijven, vraag er altijd naar.', '#E3B5A4', 3),
-(11, 'activity', 'Currywurst proeven', 'Eten', 'Curry 36 en Konnopke\'s Imbiss zijn de bekendste adressen voor het gerecht dat in Berlijn is uitgevonden. Snel, goedkoop, typisch Berlijns.', 'Konnopke\'s zit onder de U-Bahnbrug bij Eberswalder Straße — leuke sfeer.', '#E3B5A4', 4),
-(12, 'activity', 'Dagtrip naar Potsdam', 'Uitje', 'Half uur met de trein voor Slot Sanssouci en prachtige paleistuinen — een rustig contrast met de drukte van Berlijn.', 'Het reguliere OV-ticket dekt de rit naar Potsdam ook, geen apart kaartje nodig.', '#E3B5A4', 5),
-(13, 'activity', 'Shoppen: Alexa & KaDeWe', 'Shoppen', 'Alexa bij Alexanderplatz voor betaalbare ketens, KaDeWe voor het grootste warenhuis van het vasteland van Europa — leuk om te zien, ook als je niet koopt.', 'De foodhal boven in KaDeWe is gratis te bezoeken en het uitzicht is de moeite waard.', '#E3B5A4', 6),
-(14, 'activity', 'Avondwandeling Friedrichshain-Kreuzberg', 'Uitgaan', 'De wijk waar Berlijns nachtleven groot werd: bars, live muziek en straatkunst dicht bij elkaar. Ook overdag leuk om doorheen te lopen.', 'Blijf in groepjes en check vooraf de leeftijdsgrenzen van eventuele clubs.', '#E3B5A4', 7);
+INSERT INTO `exc_items` (`id`, `category`, `title`, `tag`, `description`, `tip`, `image_url`, `icon_color`, `sort_order`) VALUES
+(1, 'sight', 'Brandenburger Tor', 'Icoon', 'Het meest gefotografeerde symbool van Berlijn en van de Duitse eenwording. \'s Avonds prachtig verlicht.', 'Kom rond zonsondergang voor de beste foto\'s, veel minder druk dan overdag.', 'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=600', '#D44D5C', 1),
+(2, 'sight', 'Reichstagsgebäude', 'Architectuur', 'De glazen koepel van het Duitse parlement geeft een 360°-uitzicht over de stad en laat zien hoe transparantie in architectuur wordt vertaald.', 'Reserveer de koepel gratis van tevoren online — plekken zijn snel vol.', 'https://images.unsplash.com/photo-1559734895-7fe539097e3a?w=600', '#D44D5C', 2),
+(3, 'sight', 'East Side Gallery', 'Street art', '1,3 km origineel stuk Berlijnse Muur, volgeschilderd door kunstenaars uit de hele wereld. Een verplicht adres voor iedereen die met visuele cultuur bezig is.', 'Loop \'m in de ochtend voor rustige foto\'s zonder mensen ervoor.', 'https://images.unsplash.com/photo-1599946347371-68eb71b16afc?w=600', '#D44D5C', 3),
+(4, 'sight', 'Museumsinsel', 'Museum', 'UNESCO-eiland met vijf topmusea, waaronder het Pergamonmuseum. Antieke architectuur op ware grootte, letterlijk binnen.', 'Neem de Berlin WelcomeCard museum-optie als je meerdere musea wilt zien.', 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600', '#D44D5C', 4),
+(5, 'sight', 'Fernsehturm Alexanderplatz', 'Uitzicht', '368 meter hoge tv-toren met draaiend restaurant. Op heldere dagen zie je tot 40 km ver — goed startpunt om de stad te leren lezen.', 'Boek een tijdslot online, anders sta je makkelijk 1-2 uur in de rij.', 'https://images.unsplash.com/photo-1528747045372-a91679e1cceb?w=600', '#D44D5C', 5),
+(6, 'sight', 'Checkpoint Charlie', 'Geschiedenis', 'Beroemdste grensovergang tussen Oost- en West-Berlijn tijdens de Koude Oorlog. Nu een openluchtmuseum met foto\'s en context.', 'Combineer met het Mauermuseum ernaast voor de volledige geschiedenis.', 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600', '#D44D5C', 6),
+(7, 'sight', 'Gedenkstätte Berliner Mauer', 'Geschiedenis', 'Op de Bernauer Straße staat nog een origineel stuk grensstrook, inclusief wachttoren — indrukwekkender en stiller dan de East Side Gallery.', 'Gratis toegang, ga in combinatie met een korte wandeling langs de Mauerweg.', 'https://images.unsplash.com/photo-1629814477382-7aa7b0b6cf6f?w=600', '#D44D5C', 7),
+(8, 'activity', 'Mauerpark op zondag', 'Weekend', 'Vlooienmarkt overdag, gratis openlucht-karaoke in het amfitheater aan het einde van de middag. Dé plek om lokale student vibes op te snuiven.', 'Alleen op zondag — check dus de datum van de excursie hierop.', 'https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600', '#E3B5A4', 1),
+(9, 'activity', 'Markthalle Neun — Street Food Thursday', 'Eten', 'Donderdagavond verandert deze markthal in Kreuzberg in een internationale street food markt. Betaalbaar en heel geschikt voor groepen.', 'Ga vroeg, vanaf 17:00 wordt het snel druk.', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600', '#E3B5A4', 2),
+(10, 'activity', 'Fietstour door de stad', 'Actief', 'Berlijn is extreem fietsvriendelijk. Een gegidste of eigen fietstour langs Tiergarten, Muurresten en Alexanderplatz laat je in een paar uur veel zien.', 'Studentenkorting bij de meeste verhuurbedrijven, vraag er altijd naar.', 'https://images.unsplash.com/photo-1541614101331-1a5a3a194e92?w=600', '#E3B5A4', 3),
+(11, 'activity', 'Currywurst proeven', 'Eten', 'Curry 36 en Konnopke\'s Imbiss zijn de bekendste adressen voor het gerecht dat in Berlijn is uitgevonden. Snel, goedkoop, typisch Berlijns.', 'Konnopke\'s zit onder de U-Bahnbrug bij Eberswalder Straße — leuke sfeer.', 'https://images.unsplash.com/photo-1626132647523-66f5bf380027?w=600', '#E3B5A4', 4),
+(12, 'activity', 'Dagtrip naar Potsdam', 'Uitje', 'Half uur met de trein voor Slot Sanssouci en prachtige paleistuinen — een rustig contrast met de drukte van Berlijn.', 'Het reguliere OV-ticket dekt de rit naar Potsdam ook, geen apart kaartje nodig.', 'https://images.unsplash.com/photo-1590412200988-a436bb7050a4?w=600', '#E3B5A4', 5),
+(13, 'activity', 'Shoppen: Alexa & KaDeWe', 'Shoppen', 'Alexa bij Alexanderplatz voor betaalbare ketens, KaDeWe voor het grootste warenhuis van het vasteland van Europa — leuk om te zien, ook als je niet koopt.', 'De foodhal boven in KaDeWe is gratis te bezoeken en het uitzicht is de moeite waard.', 'https://images.unsplash.com/photo-1569003339405-ea396a5a8a90?w=600', '#E3B5A4', 6),
+(14, 'activity', 'Avondwandeling Friedrichshain-Kreuzberg', 'Uitgaan', 'De wijk waar Berlijns nachtleven groot werd: bars, live muziek en straatkunst dicht bij elkaar. Ook overdag leuk om doorheen te lopen.', 'Blijf in groepjes en check vooraf de leeftijdsgrenzen van eventuele clubs.', 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600', '#E3B5A4', 7);
 
 -- --------------------------------------------------------
 
