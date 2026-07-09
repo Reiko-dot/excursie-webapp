@@ -9,7 +9,7 @@ const API_URL = 'api.php';
 // terugkomt, als string zodat we hem overal opnieuw kunnen tekenen.
 function sparkSvg(size, color) {
     return `<svg width="${size}" height="${size}" viewBox="0 0 24 24">
-        <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="${color}" />
+        <path d=\"M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z\" fill=\"${color}\" />
     </svg>`;
 }
 
@@ -84,6 +84,7 @@ function renderShortcuts(shortcuts) {
     `).join('');
 }
 
+// (Aangepast: renderItemCards toont nu de afbeelding onder de titel)
 function renderItemCards(containerId, items) {
     const wrap = document.getElementById(containerId);
     wrap.innerHTML = items.map(item => `
@@ -93,6 +94,7 @@ function renderItemCards(containerId, items) {
                 <div class="item-top">
                     <div class="item-title">${escapeHtml(item.title)}</div><span class="tag">${escapeHtml(item.tag)}</span>
                 </div>
+                ${item.image_url ? `<img src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.title)}" class="item-card-image" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin: 8px 0 12px 0; display: block;">` : ''}
                 <p class="item-desc">${escapeHtml(item.description)}</p>
                 <div class="item-tip"><span class="tip-label">TIP</span> ${escapeHtml(item.tip)}</div>
             </div>

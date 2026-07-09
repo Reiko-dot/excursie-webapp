@@ -33,9 +33,9 @@ try {
         'SELECT target_view, title, subtitle, full_width FROM exc_shortcuts ORDER BY sort_order ASC'
     )->fetchAll();
 
-    // ---- items: sights + activities ----
+    // ---- items: sights + activities (Aangepast: image_url toegevoegd aan SELECT) ----
     $itemsStmt = $pdo->query(
-        'SELECT category, title, tag, description, tip, icon_color
+        'SELECT category, title, tag, description, tip, icon_color, image_url
          FROM exc_items ORDER BY category ASC, sort_order ASC'
     );
     $sights = [];
