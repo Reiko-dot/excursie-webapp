@@ -1,6 +1,12 @@
+// =====================================================================
+// app.js — haalt alle content op bij api.php (database) en bouwt de
+// interface. Er staat geen enkele tekst meer hardcoded in de HTML.
+// =====================================================================
 
 const API_URL = 'api.php';
 
+// Kleine helper: dezelfde 4-punts "spark" svg die overal in het design
+// terugkomt, als string zodat we hem overal opnieuw kunnen tekenen.
 function sparkSvg(size, color) {
     return `<svg width="${size}" height="${size}" viewBox="0 0 24 24">
         <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z" fill="${color}" />

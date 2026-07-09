@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * api.php — enige endpoint van de app.
+ * Haalt alle content op uit de database en geeft één JSON-object terug
+ * dat app.js gebruikt om de hele interface te vullen.
+ *
+ * Aanroep: GET /api.php
+ */
 
 require_once __DIR__ . '/db/config.php';
 

@@ -1,3 +1,4 @@
+// Verhoog dit versienummer bij elke deploy om de cache te verversen.
 const CACHE_VERSION = 'v1';
 const SHELL_CACHE = 'excursie-shell-' + CACHE_VERSION;
 const DATA_CACHE = 'excursie-data-' + CACHE_VERSION;
@@ -36,7 +37,9 @@ self.addEventListener('fetch', (event) => {
     const { request } = event;
     const url = new URL(request.url);
 
-     if (url.pathname.endsWith('/api.php')) {
+    // API-data: eerst het netwerk proberen (verse data uit de database),
+    // val terug op de laatst opgeslagen versie als er geen verbinding is.
+    if (url.pathname.endsWith('/api.php')) {
         event.respondWith(
             fetch(request)
                 .then((response) => {
@@ -49,6 +52,7 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
+    // App-shell bestanden: eerst cache, dan pas netwerk (snel + offline-proof).
     if (request.method === 'GET' && url.origin === self.location.origin) {
         event.respondWith(
             caches.match(request).then((cached) => cached || fetch(request))
