@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Duitsland Excursie</title>
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#160029">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Excursie">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600;700&display=swap"
@@ -15,6 +24,9 @@
 <body>
     <div class="app">
 
+        <!-- OFFLINE / FOUT MELDING -->
+        <div class="status-banner" id="statusBanner" hidden></div>
+
         <!-- HEADER -->
         <header class="app-header">
             <div class="row">
@@ -24,12 +36,12 @@
                     </svg>
                 </span>
                 <div>
-                    <div class="brand-title">Duitsland excursie</div>
-                    <div class="brand-sub">Alles voor onderweg</div>
+                    <div class="brand-title" id="brandTitle">&nbsp;</div>
+                    <div class="brand-sub" id="brandSub">&nbsp;</div>
                 </div>
             </div>
-            <div class="page-label" id="pageLabel">Bestemming</div>
-            <div class="page-title" id="pageTitle">Berlijn</div>
+            <div class="page-label" id="pageLabel">&nbsp;</div>
+            <div class="page-title" id="pageTitle">&nbsp;</div>
         </header>
 
         <!-- CONTENT -->
@@ -38,32 +50,16 @@
             <!-- HOME -->
             <section class="view active" id="view-home">
                 <div class="hero">
-                    <div class="hero-eyebrow">Volgend schooljaar · Excursie</div>
-                    <div class="hero-title">BERLIN</div>
-                    <p class="hero-desc">Vijf dagen Bauhaus, Berlijnse Mauer en beats — alles wat je moet weten voor de
-                        excursie op één plek.</p>
+                    <div class="hero-eyebrow" id="heroEyebrow">&nbsp;</div>
+                    <div class="hero-title" id="heroTitle">&nbsp;</div>
+                    <p class="hero-desc" id="heroDesc">&nbsp;</p>
                     <div class="stamp">
-                        <div class="stamp-inner">BERLIN<br>2027</div>
+                        <div class="stamp-inner" id="stampInner">&nbsp;</div>
                     </div>
                 </div>
 
-                <div class="facts-strip">
-                    <div class="fact-card">
-                        <div class="fact-label">Reistijd bus</div>
-                        <div class="fact-value">~9-10u</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-label">Taal</div>
-                        <div class="fact-value">Duits</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-label">Valuta</div>
-                        <div class="fact-value">Euro (€)</div>
-                    </div>
-                    <div class="fact-card">
-                        <div class="fact-label">Stopcontact</div>
-                        <div class="fact-value">Type F</div>
-                    </div>
+                <div class="facts-strip" id="factsStrip">
+                    <!-- gevuld door app.js met data uit exc_quick_facts -->
                 </div>
 
                 <div class="section-heading">
@@ -71,393 +67,54 @@
                             <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
                                 fill="#773344" />
                         </svg></span>
-                    Waarom Berlijn
+                    <span id="whyHeading">&nbsp;</span>
                 </div>
-                <p style="font-size:13px; line-height:1.6; color:#3a2530; margin-bottom:8px;">
-                    Berlijn is de stad van geschiedenis én street culture: een verdeelde stad die weer één werd, vol
-                    street art, techno-clubs, musea en een designscene die naadloos aansluit op wat je op GLU leert.
-                    Perfect voor wie zich met UI, branding en visuele cultuur bezighoudt.
-                </p>
+                <p style="font-size:13px; line-height:1.6; color:#3a2530; margin-bottom:8px;" id="whyText">&nbsp;</p>
 
-                <div class="section-heading">Snel naar</div>
-                <div class="shortcut-grid">
-                    <button class="shortcut" onclick="goTo('sights')">
-                        <span class="spark"><svg width="16" height="16" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#160029" />
-                            </svg></span>
-                        <div class="sc-title">Bezienswaardig&shy;heden</div>
-                        <div class="sc-sub">7 plekken</div>
-                    </button>
-                    <button class="shortcut" onclick="goTo('activities')">
-                        <span class="spark"><svg width="16" height="16" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#160029" />
-                            </svg></span>
-                        <div class="sc-title">Activiteiten &amp; tips</div>
-                        <div class="sc-sub">7 ideeën</div>
-                    </button>
-                    <button class="shortcut" onclick="goTo('practical')" style="grid-column:1 / -1;">
-                        <span class="spark"><svg width="16" height="16" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#160029" />
-                            </svg></span>
-                        <div class="sc-title">Praktische info</div>
-                        <div class="sc-sub">Kaart · OV · noodnummers</div>
-                    </button>
+                <div class="section-heading" id="quickNavHeading">&nbsp;</div>
+                <div class="shortcut-grid" id="shortcutGrid">
+                    <!-- gevuld door app.js met data uit exc_shortcuts -->
                 </div>
             </section>
 
             <!-- BEZIENSWAARDIGHEDEN -->
             <section class="view" id="view-sights">
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Brandenburger Tor</div><span class="tag">Icoon</span>
-                        </div>
-                        <p class="item-desc">Het meest fotografeerde symbool van Berlijn en van de Duitse eenwording. 's
-                            Avonds prachtig verlicht.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Kom rond zonsondergang voor de beste
-                            foto's, veel minder druk dan overdag.</div>
-                    </div>
+                <div id="sightsList">
+                    <!-- gevuld door app.js met data uit exc_items (category = sight) -->
                 </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Reichstagsgebäude</div><span class="tag">Architectuur</span>
-                        </div>
-                        <p class="item-desc">De glazen koepel van het Duitse parlement geeft een 360°-uitzicht over de
-                            stad en laat zien hoe transparantie in architectuur wordt vertaald.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Reserveer de koepel gratis van tevoren
-                            online — plekken zijn snel vol.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">East Side Gallery</div><span class="tag">Street art</span>
-                        </div>
-                        <p class="item-desc">1,3 km origineel stuk Berlijnse Muur, volgeschilderd door kunstenaars uit
-                            de hele wereld. Een verplicht adres voor iedereen die met visuele cultuur bezig is.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Loop 'm in de ochtend voor rustige
-                            foto's zonder mensen ervoor.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Museumsinsel</div><span class="tag">Museum</span>
-                        </div>
-                        <p class="item-desc">UNESCO-eiland met vijf topmusea, waaronder het Pergamonmuseum. Antieke
-                            architectuur op ware grootte, letterlijk binnen.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Neem de Berlin WelcomeCard museum-optie
-                            als je meerdere musea wilt zien.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Fernsehturm Alexanderplatz</div><span class="tag">Uitzicht</span>
-                        </div>
-                        <p class="item-desc">368 meter hoge tv-toren met draaiend restaurant. Op heldere dagen zie je
-                            tot 40 km ver — goed startpunt om de stad te leren lezen.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Boek een tijdslot online, anders sta je
-                            makkelijk 1-2 uur in de rij.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Checkpoint Charlie</div><span class="tag">Geschiedenis</span>
-                        </div>
-                        <p class="item-desc">Beroemdste grensovergang tussen Oost- en West-Berlijn tijdens de Koude
-                            Oorlog. Nu een openluchtmuseum met foto's en context.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Combineer met het Mauermuseum ernaast
-                            voor de volledige geschiedenis.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#D44D5C" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Gedenkstätte Berliner Mauer</div><span
-                                class="tag">Geschiedenis</span>
-                        </div>
-                        <p class="item-desc">Op de Bernauer Straße staat nog een origineel stuk grensstrook, inclusief
-                            wachttoren — indrukwekkender en stiller dan de East Side Gallery.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Gratis toegang, ga in combinatie met
-                            een korte wandeling langs de Mauerweg.</div>
-                    </div>
-                </div>
-
             </section>
 
             <!-- ACTIVITEITEN & TIPS -->
             <section class="view" id="view-activities">
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Mauerpark op zondag</div><span class="tag">Weekend</span>
-                        </div>
-                        <p class="item-desc">Vlooienmarkt overdag, gratis openlucht-karaoke in het amfitheater aan het
-                            einde van de middag. Dé plek om lokale student vibes op te snuiven.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Alleen op zondag — check dus de datum
-                            van de excursie hierop.</div>
-                    </div>
+                <div id="activitiesList">
+                    <!-- gevuld door app.js met data uit exc_items (category = activity) -->
                 </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Markthalle Neun — Street Food Thursday</div><span
-                                class="tag">Eten</span>
-                        </div>
-                        <p class="item-desc">Donderdagavond verandert deze markthal in Kreuzberg in een internationale
-                            street food markt. Betaalbaar en heel geschikt voor groepen.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Ga vroeg, vanaf 17:00 wordt het snel
-                            druk.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Fietstour door de stad</div><span class="tag">Actief</span>
-                        </div>
-                        <p class="item-desc">Berlijn is extreem fietsvriendelijk. Een gegidste of eigen fietstour langs
-                            Tiergarten, Muurresten en Alexanderplatz laat je in een paar uur veel zien.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Studentenkorting bij de meeste
-                            verhuurbedrijven, vraag er altijd naar.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Currywurst proeven</div><span class="tag">Eten</span>
-                        </div>
-                        <p class="item-desc">Curry 36 en Konnopke's Imbiss zijn de bekendste adressen voor het gerecht
-                            dat in Berlijn is uitgevonden. Snel, goedkoop, typisch Berlijns.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Konnopke's zit onder de U-Bahnbrug bij
-                            Eberswalder Straße — leuke sfeer.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Dagtrip naar Potsdam</div><span class="tag">Uitje</span>
-                        </div>
-                        <p class="item-desc">Half uur met de trein voor Slot Sanssouci en prachtige paleistuinen — een
-                            rustig contrast met de drukte van Berlijn.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Het reguliere OV-ticket dekt de rit
-                            naar Potsdam ook, geen apart kaartje nodig.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Shoppen: Alexa &amp; KaDeWe</div><span class="tag">Shoppen</span>
-                        </div>
-                        <p class="item-desc">Alexa bij Alexanderplatz voor betaalbare ketens, KaDeWe voor het grootste
-                            warenhuis van het vasteland van Europa — leuk om te zien, ook als je niet koopt.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> De foodhal boven in KaDeWe is gratis te
-                            bezoeken en het uitzicht is de moeite waard.</div>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-icon"><svg width="20" height="20" viewBox="0 0 24 24">
-                            <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                fill="#E3B5A4" />
-                        </svg></div>
-                    <div class="item-body">
-                        <div class="item-top">
-                            <div class="item-title">Avondwandeling Friedrichshain-Kreuzberg</div><span
-                                class="tag">Uitgaan</span>
-                        </div>
-                        <p class="item-desc">De wijk waar Berlijns nachtleven groot werd: bars, live muziek en
-                            straatkunst dicht bij elkaar. Ook overdag leuk om doorheen te lopen.</p>
-                        <div class="item-tip"><span class="tip-label">TIP</span> Blijf in groepjes en check vooraf de
-                            leeftijdsgrenzen van eventuele clubs.</div>
-                    </div>
-                </div>
-
-                <div class="placeholder-note">
-                    [Docenten: vul hier de definitief geplande groepsactiviteiten en tijden in, zodra bekend.]
-                </div>
-
+                <div class="placeholder-note" id="noteActivities">&nbsp;</div>
             </section>
 
             <!-- PRAKTISCH -->
             <section class="view" id="view-practical">
 
-                <div class="section-heading">Kaart</div>
+                <div class="section-heading" id="headingMap">&nbsp;</div>
                 <div class="map-wrap">
-                    <iframe src="https://www.google.com/maps?q=Berlin,+Germany&output=embed" loading="lazy"
-                        allowfullscreen></iframe>
-                    <a class="map-caption map-link" href="https://www.google.com/maps/place/Berlin" target="_blank"
-                        rel="noopener">Open Berlijn in Google Maps →</a>
+                    <iframe id="mapFrame" src="" loading="lazy" allowfullscreen></iframe>
+                    <a class="map-caption map-link" id="mapLink" href="#" target="_blank" rel="noopener">&nbsp;</a>
                 </div>
 
-                <div class="section-heading">Heenreis</div>
-                <ul class="info-list">
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>We reizen met de touringcar naar Berlijn, reken op zo'n 9 tot 10 uur onderweg
-                        inclusief pauzes.</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Neem iets te doen mee voor onderweg (koptelefoon, opgeladen telefoon/laptop,
-                        boek).</li>
-                </ul>
+                <div class="section-heading" id="headingHeenreis">&nbsp;</div>
+                <ul class="info-list" id="heenreisList"></ul>
 
-                <div class="section-heading">Openbaar vervoer in de stad</div>
-                <div class="transit-row">
-                    <div class="line-badge u">U</div>
-                    <div class="transit-text"><b>U-Bahn</b> — metro, rijdt door de hele stad, ook 's nachts in het
-                        weekend.</div>
-                </div>
-                <div class="transit-row">
-                    <div class="line-badge s">S</div>
-                    <div class="transit-text"><b>S-Bahn</b> — sneltrein, goed voor langere afstanden en Potsdam.</div>
-                </div>
-                <div class="transit-row">
-                    <div class="line-badge bus">B</div>
-                    <div class="transit-text"><b>Bus &amp; tram</b> — vult de gaten op waar geen metro/trein komt, met
-                        name in het oosten.</div>
-                </div>
-                <ul class="info-list" style="margin-top:8px;">
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Eén ticket geldt voor U-Bahn, S-Bahn, bus én tram (zone AB dekt bijna alles
-                        binnen de stad).</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Stempel je kaartje bij de gele automaatjes op het perron — controle is
-                        onopvallend maar de boete is hoog.</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Een dagkaart (Tageskarte) is vaak voordeliger dan losse ritjes vanaf 3+ ritten
-                        per dag.</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Download de app "BVG Fahrinfo" of "Öffi" voor live reisplanning offline.</li>
-                </ul>
+                <div class="section-heading" id="headingOv">&nbsp;</div>
+                <div id="transitRows"></div>
+                <ul class="info-list" style="margin-top:8px;" id="ovTicketsList"></ul>
 
-                <div class="section-heading">Noodnummers</div>
-                <div class="emergency-card">
-                    <div class="emergency-row"><span class="emergency-name">Algemeen alarmnummer
-                            (ambulance/brandweer)</span><span class="emergency-num">112</span></div>
-                    <div class="emergency-row"><span class="emergency-name">Politie</span><span
-                            class="emergency-num">110</span></div>
-                    <div class="emergency-row"><span class="emergency-name">Nederlandse ambassade Berlijn</span><span
-                            class="emergency-num">[in te vullen]</span></div>
-                    <div class="emergency-row"><span class="emergency-name">Contactpersoon docent(en) t.p.</span><span
-                            class="emergency-num">[in te vullen]</span></div>
-                    <div class="emergency-row"><span class="emergency-name">Adres hotel/verblijf</span><span
-                            class="emergency-num">[in te vullen]</span></div>
-                </div>
+                <div class="section-heading" id="headingEmergency">&nbsp;</div>
+                <div class="emergency-card" id="emergencyCard"></div>
 
-                <div class="section-heading">Goed om te weten</div>
-                <ul class="info-list">
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Duitsland gebruikt hetzelfde stopcontact als Nederland (type F) — geen adapter
-                        nodig.</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Contactloos betalen wordt steeds normaler, maar veel kleine eetkraampjes en
-                        imbisses zijn cash-only. Neem wat contant geld mee.</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Fooi geven (5-10%) wordt gewaardeerd in restaurants, maar is niet verplicht
-                        zoals in de VS.</li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>Zorg voor een geldige Europese zorgverzekeringskaart (EHIC) of reisverzekering.
-                    </li>
-                    <li><span class="spark"><svg width="12" height="12" viewBox="0 0 24 24">
-                                <path d="M12 0 L14.5 9.5 L24 12 L14.5 14.5 L12 24 L9.5 14.5 L0 12 L9.5 9.5 Z"
-                                    fill="#D44D5C" />
-                            </svg></span>WiFi is breed beschikbaar in cafés en het OV, maar zet voor de zekerheid ook
-                        wat mobiele data klaar.</li>
-                </ul>
+                <div class="section-heading" id="headingKnow">&nbsp;</div>
+                <ul class="info-list" id="knowList"></ul>
 
-                <div class="placeholder-note">
-                    [Docenten: vul hier het definitieve verzamelpunt, vluchtnummer/heenreis en het exacte programma per
-                    dag in.]
-                </div>
+                <div class="placeholder-note" id="notePractical">&nbsp;</div>
 
             </section>
 
@@ -470,53 +127,33 @@
                     <path d="M3 11l9-8 9 8" />
                     <path d="M5 10v10h14V10" />
                 </svg>
-                Home
+                <span id="navHome">Home</span>
             </button>
             <button class="nav-btn" data-view="sights" onclick="goTo('sights')">
                 <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M3 18l6-8 4 5 3-4 5 7z" />
                     <circle cx="8" cy="8" r="2" />
                 </svg>
-                Bezienswaardig.
+                <span id="navSights">Bezienswaardig.</span>
             </button>
             <button class="nav-btn" data-view="activities" onclick="goTo('activities')">
                 <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2l2.6 6.4L21 9l-5 4.3L17.4 20 12 16.6 6.6 20 8 13.3 3 9l6.4-.6z" />
                 </svg>
-                Activiteiten
+                <span id="navActivities">Activiteiten</span>
             </button>
             <button class="nav-btn" data-view="practical" onclick="goTo('practical')">
                 <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 20l-5-2V4l5 2 6-2 5 2v14l-5-2-6 2z" />
                     <path d="M9 6v14M15 4v14" />
                 </svg>
-                Praktisch
+                <span id="navPractical">Praktisch</span>
             </button>
         </nav>
 
     </div>
 
-    <script>
-        const labels = {
-            home: { label: 'Bestemming', title: 'Berlijn' },
-            sights: { label: 'Ontdek de stad', title: 'Bezienswaardigheden' },
-            activities: { label: 'Doen & proeven', title: 'Activiteiten & tips' },
-            practical: { label: 'Onderweg', title: 'Praktische info' }
-        };
-
-        function goTo(view) {
-            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-            document.getElementById('view-' + view).classList.add('active');
-
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            document.querySelector('.nav-btn[data-view="' + view + '"]').classList.add('active');
-
-            document.getElementById('pageLabel').textContent = labels[view].label;
-            document.getElementById('pageTitle').textContent = labels[view].title;
-
-            document.querySelector('.app-content').scrollTo({ top: 0, behavior: 'instant' });
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>

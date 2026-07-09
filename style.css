@@ -555,3 +555,22 @@ a.map-link {
 ::-webkit-scrollbar {
     width: 0;
 }
+
+/* ---------- Status/offline banner (nieuw, voor de PWA/database-koppeling) ---------- */
+.status-banner {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--wineplum);
+    color: var(--linen);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    line-height: 1.5;
+    text-align: center;
+    padding: 8px 14px;
+}
+
+.status-banner.status-banner--error {
+    background: var(--lobster);
+    color: var(--midnight);
+}
